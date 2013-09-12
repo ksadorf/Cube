@@ -2,15 +2,16 @@ Balle=function(x,y,canH_,canW_,joueur_){
 	this.x=x;
 	this.y=y;
 	this.R=10;
-	this.dx=Math.random() *10;
-	this.dy=Math.random() *10;
+	this.dx=Math.random() *8+0.1;
+	this.dy=Math.random() *5+3;
 	this.canW=canW_;
 	this.canH=canH_;
 	this.joueur=joueur_;
+	this.color=0;
 }
 Balle.prototype = {
-	draw : function(c){
-		drawKeyboard.fillStyle = 'rgba(0,20,30,0.5)';	
+	draw : function(c,color){
+		drawKeyboard.fillStyle = color;	
 		drawKeyboard.beginPath();
 		drawKeyboard.arc(this.x,this.y,this.R,0,Math.PI*2);
 		drawKeyboard.fill();
@@ -18,6 +19,8 @@ Balle.prototype = {
 	},
 	
 	move : function(){
+		if(this.color>0)
+			this.color--;
 		this.moveH(this.dx);
 		return this.moveV(this.dy);
 	},
@@ -54,6 +57,7 @@ Balle.prototype = {
 				else{
 					document.getElementById('x').innerHTML = parseInt(document.getElementById('x').innerHTML) + 1;
 					mort+=2;
+					this.color+=5;
 				}
 			}
 			
@@ -68,6 +72,7 @@ Balles = function(canH_,canW_,joueur_){
 	this.canW=canW_;
 	this.canH=canH_;
 	this.joueur=joueur_;
+	this.colorList=['rgba(0,20,30,0.5)','rgba(250,2,3,0.5)','rgba(250,2,3,0.7)','rgba(250,2,3,1)','rgba(250,2,3,0.7)','rgba(250,2,3,1)'];
 }
 Balles.prototype= {
 	add : function (b){
@@ -85,12 +90,13 @@ Balles.prototype= {
 	draw : function(drawKeyboard){
 		var end= this.tab.length;
 		for(var i=0 ;i<end;i++){
-			this.tab[i].draw(drawKeyboard);
+			this.tab[i].draw(drawKeyboard,this.colorList[this.tab[i].color]);
 		}
 	},
 	addRandom : function(){
-		var b=new Balle(Math.random()*this.canW,Math.random()*90+10,this.canH,this.canW,this.joueur);
+		var b=new Balle(Math.random()*this.canW,Math.random()*90+10,this.canH,this.canW,this.joueur);		
 		if(!this.add(b))
 			delete(b);
+		document.getElementById('nbBalle').innerHTML=this.tab.length;
 	}
 }

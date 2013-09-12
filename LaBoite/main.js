@@ -48,8 +48,8 @@ function redraw(width,height,joueur, balles) {
 	balles.move();
 	joueur.move();
 	if(mort>0){
-		drawKeyboard.fillStyle = 'rgba(255,0,0,1)';
-		drawKeyboard.fillRect(0 , 0, width, height);
+		//drawKeyboard.fillStyle = 'rgba(255,0,0,1)';
+		//drawKeyboard.fillRect(0 , 0, width, height);
 		mort--;
 	}
 	joueur.draw(drawKeyboard);

@@ -3,7 +3,7 @@ Joueur = function(canH_,canW_){
 	this.x=0;
 	this.y=0;
 	this.h=15;
-	this.w=400;
+	this.w=500;
 	this.canW=canW_;
 	this.canH=canH_;
 	this.left=false;
@@ -51,30 +51,26 @@ Joueur.prototype = {
 	},
 	keyDown : function (e){
 		if(e.keyCode == "39"){
-			this.mouvement[39]=1;
-			console.log("Passe a true");
+			joueur.moveH(20);
 			this.right=true;
 		}
 		if(e.keyCode == '37') {
+			joueur.moveH(-20);
 			this.left=true;
 		}
-		console.log(this.right);
 	},
 	keyUp : function(e){
-		console.log(this.right);
 		if(e.keyCode == "39") {
-			this.mouvement[39]=0;
-			joueur.moveH(20);
+			
 			this.right=false;
 		}
 		if(e.keyCode == '37') {
-			joueur.moveH(-20);
+			
 			this.left=false;
 		}
 
 	},
 	move : function(){
-		console.log(this.mouvement.length);
 		if(this.right==true) {
 			console.log("couou"); 
 			joueur.moveH(20);  
