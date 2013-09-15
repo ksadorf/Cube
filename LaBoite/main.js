@@ -2,10 +2,49 @@
 /* =========================== */
 /* =========================== */
 /* KEYBOARD BLOCK RELATED MOVE */
+var tabl=[];
+Game = function(){
+	this.keyboard=[];
+	this.ctx;
+	var canvasKeyboard = document.getElementById('game');    
+    // Set a height and width for the canvas
+    this.height = canvasKeyboard.height;
+    this.width = canvasKeyboard.width;
+	
+	this.drawKeyboard = canvasKeyboard.getContext('2d');
+	this.joueur= new Joueur(this.width,this.height);
+	this.balles= new Balles(this.width,this.height,this.joueur);
+	this.initKeyboard();
+	
+
+}
+Game.prototype={
+	redraw : function (mouvement){
+		this.clear();
+		this.balles.move();
+		this.joueur.move(mouvement);
+		this.joueur.draw(this.drawKeyboard);
+		this.balles.draw(this.drawKeyboard);
+	
+	},
+	initKeyboard : function(){
+		this.balles.addRandom();
+		document.onkeydown = keyDown;
+		document.onkeyup = keyUp;
+		requestAnimationFrame(function animate(){
+				
+				requestAnimationFrame(animate);
+				this.redraw(tabl);
+		});	
+	},
+	clear : function(){
+		this.drawKeyboard.clearRect(0, 0, this.width, this.height);
+	}
+	
+}
 
 
 
-var mort = 0;
 
 // The main function for initiating everything
 function initKeyboard() {
@@ -28,14 +67,14 @@ function initKeyboard() {
 	//setInterval(redraw, 30);
 	// When the user presses a key run a function, when the user stops
 	// run another function. We'll get to these functions later.
-	document.onkeydown = joueur.keyDown;
-	document.onkeyup = joueur.keyUp;
+	
+	document.onkeydown = keyDown;
+	document.onkeyup = keyUp;
 	requestAnimationFrame(function animate(){
+			
 			requestAnimationFrame(animate);
-			redraw(width,height,joueur, balles);
-	});
-	
-	
+			redraw(width,height,joueur, balles,tabl);
+	});	
 }
 
 // Wipe the canvas when we want to move the rectangle, then we can redraw it.
@@ -43,15 +82,29 @@ function clear(c,width,height) {
     c.clearRect(0, 0, width, height);
 }
 
-function redraw(width,height,joueur, balles) {
+function redraw(width,height,joueur, balles,mouvement) {
 	clear(drawKeyboard,width,height);
 	balles.move();
-	joueur.move();
-	if(mort>0){
-		//drawKeyboard.fillStyle = 'rgba(255,0,0,1)';
-		//drawKeyboard.fillRect(0 , 0, width, height);
-		mort--;
-	}
+	joueur.move(mouvement);
 	joueur.draw(drawKeyboard);
 	balles.draw(drawKeyboard);
+}
+
+function keyDown(e){
+		if(e.keyCode == "39"){
+			tabl[39]=true;
+		}
+		if(e.keyCode == '37') {
+			tabl[37]=true;
+		}
+
+}
+function keyUp(e){
+		if(e.keyCode == "39"){
+			tabl[39]=false;
+		}
+		if(e.keyCode == '37') {
+			tabl[37]=false;
+		}
+
 }

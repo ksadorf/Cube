@@ -3,15 +3,14 @@ Joueur = function(canH_,canW_){
 	this.x=0;
 	this.y=0;
 	this.h=15;
-	this.w=500;
+	this.w=100;
 	this.canW=canW_;
 	this.canH=canH_;
-	this.left=false;
-	this.right=false;
 	this.mouvement=[];
+	
 }
 Joueur.prototype = {
-	draw : function(c){
+	draw : function(drawKeyboard){
 		drawKeyboard.fillStyle = 'rgba(0,0,0,0.5)';
 		drawKeyboard.fillRect(this.x , this.y, this.w, this.h);
 	},
@@ -51,32 +50,33 @@ Joueur.prototype = {
 	},
 	keyDown : function (e){
 		if(e.keyCode == "39"){
-			joueur.moveH(20);
+			this.mouvement[39]=true;
 			this.right=true;
 		}
 		if(e.keyCode == '37') {
-			joueur.moveH(-20);
+			this.mouvement[37]=true;
 			this.left=true;
 		}
 	},
 	keyUp : function(e){
-		if(e.keyCode == "39") {
-			
+		if(e.keyCode == "39") {		
+			this.mouvement[39]=false;
 			this.right=false;
 		}
 		if(e.keyCode == '37') {
-			
+			this.mouvement[37]=false;
 			this.left=false;
 		}
 
 	},
-	move : function(){
-		if(this.right==true) {
-			console.log("couou"); 
-			joueur.moveH(20);  
+	move : function(keyboard){
+	if(typeof(keyboard)!="undefined"){
+		if(keyboard[39]) {
+			this.moveH(15);  
 		}
-		if(this.left==true) {
-			joueur.moveH(-20); 
+		if(keyboard[37]) {
+			this.moveH(-15); 
 		}
+	}
 	}
 }

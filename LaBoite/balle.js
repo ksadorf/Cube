@@ -10,7 +10,7 @@ Balle=function(x,y,canH_,canW_,joueur_){
 	this.color=0;
 }
 Balle.prototype = {
-	draw : function(c,color){
+	draw : function(drawKeyboard,color){
 		drawKeyboard.fillStyle = color;	
 		drawKeyboard.beginPath();
 		drawKeyboard.arc(this.x,this.y,this.R,0,Math.PI*2);
@@ -56,7 +56,6 @@ Balle.prototype = {
 				}
 				else{
 					document.getElementById('x').innerHTML = parseInt(document.getElementById('x').innerHTML) + 1;
-					mort+=2;
 					this.color+=5;
 				}
 			}
