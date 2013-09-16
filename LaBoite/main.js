@@ -70,6 +70,10 @@ function initKeyboard() {
 	
 	document.onkeydown = keyDown;
 	document.onkeyup = keyUp;
+	
+	
+	document.addEventListener('build', function (e) {console.log("Coucoucoucoucocou");}, false);
+	
 	requestAnimationFrame(function animate(){
 			
 			requestAnimationFrame(animate);
@@ -88,6 +92,8 @@ function redraw(width,height,joueur, balles,mouvement) {
 	if(tabl[82]){
 		balles.removeAll();
 		balles.addRandom();
+		var event = new Event('build');
+		document.dispatchEvent(event);
 	}
 	
 	balles.move();
