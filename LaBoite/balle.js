@@ -48,14 +48,16 @@ Balle.prototype = {
 				this.Y=this.R;
 			}else{
 				this.y=this.canH-this.R-this.joueur.h;
-				if(this.x>this.joueur.x && this.x<this.joueur.x+this.joueur.w){
 					var safe =parseInt(document.getElementById('y').innerHTML) + 1;
+				if(this.x>this.joueur.x && this.x<this.joueur.x+this.joueur.w){ // Balle sauvée
 					if(safe%3==0)
 						res =true;
-					document.getElementById('y').innerHTML = safe;
+					var event = new Event('balleSauve');
+					document.dispatchEvent(event);
 				}
-				else{
-					document.getElementById('x').innerHTML = parseInt(document.getElementById('x').innerHTML) + 1;
+				else{ //Balle perdu
+					var event = new Event('balleMorte');
+					document.dispatchEvent(event);
 					this.color+=5;
 				}
 			}

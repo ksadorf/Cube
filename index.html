@@ -26,7 +26,7 @@
 		</script>
 
 	</head>
-	<body onload="initKeyboard();">
+	<body onload="new Game();">
 		<div id="keyboardcontainer">
 			<div>
 				Vous êtes mort <span id="x" >0</span> fois et vous avez sauvé <span id="y" >0</span> balles ! <br>Ne laissez pas la boite gagner !
@@ -37,7 +37,8 @@
 			</canvas>
 			<div>
 				ProTip: Utiliser les flêches pour se déplacer et empêcher les balles de tomber. <br>
-				En ce moment, il y en a <span id="nbBalle"> 1 </span>.
+				En ce moment, il y en a <span id="nbBalle"> 1 </span>. Votre score est courant <span id="score"> 0 </span>.<br>
+				Votre highscore est de <span id="highScore"> 0 </span>.
 			</div>
 		</div>
 	</body>

@@ -1,13 +1,13 @@
 
 Joueur = function(canH_,canW_){
-	this.x=0;
-	this.y=0;
+	
+	
 	this.h=15;
 	this.w=100;
+	this.x=canW_/2-this.w/2;
+	this.y=canH_-this.h;
 	this.canW=canW_;
-	this.canH=canH_;
-	this.mouvement=[];
-	
+	this.canH=canH_;	
 }
 Joueur.prototype = {
 	draw : function(drawKeyboard){
@@ -48,33 +48,12 @@ Joueur.prototype = {
 		this.y=newY;
 		return;
 	},
-	keyDown : function (e){
-		if(e.keyCode == "39"){
-			this.mouvement[39]=true;
-			this.right=true;
-		}
-		if(e.keyCode == '37') {
-			this.mouvement[37]=true;
-			this.left=true;
-		}
-	},
-	keyUp : function(e){
-		if(e.keyCode == "39") {		
-			this.mouvement[39]=false;
-			this.right=false;
-		}
-		if(e.keyCode == '37') {
-			this.mouvement[37]=false;
-			this.left=false;
-		}
-
-	},
 	move : function(keyboard){
 	if(typeof(keyboard)!="undefined"){
-		if(keyboard[39]) {
+		if(keyboard[39]) { //left
 			this.moveH(15);  
 		}
-		if(keyboard[37]) {
+		if(keyboard[37]) { //right
 			this.moveH(-15); 
 		}
 	}
