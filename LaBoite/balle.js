@@ -97,5 +97,8 @@ Balles.prototype= {
 		if(!this.add(b))
 			delete(b);
 		document.getElementById('nbBalle').innerHTML=this.tab.length;
+	},
+	removeAll : function(){
+		this.tab.length=0;
 	}
 }

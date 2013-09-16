@@ -83,7 +83,13 @@ function clear(c,width,height) {
 }
 
 function redraw(width,height,joueur, balles,mouvement) {
+	
 	clear(drawKeyboard,width,height);
+	if(tabl[82]){
+		balles.removeAll();
+		balles.addRandom();
+	}
+	
 	balles.move();
 	joueur.move(mouvement);
 	joueur.draw(drawKeyboard);
@@ -93,18 +99,29 @@ function redraw(width,height,joueur, balles,mouvement) {
 function keyDown(e){
 		if(e.keyCode == "39"){
 			tabl[39]=true;
+			return;
 		}
 		if(e.keyCode == '37') {
 			tabl[37]=true;
+			return;
+		}
+		if(e.keyCode == "82"){
+			tabl[82]=true;
+			return;
 		}
 
 }
 function keyUp(e){
 		if(e.keyCode == "39"){
 			tabl[39]=false;
+			return;
 		}
 		if(e.keyCode == '37') {
 			tabl[37]=false;
+			return;
 		}
-
+		if(e.keyCode == "82"){
+			tabl[82]=false;
+			return;
+		}
 }
