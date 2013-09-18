@@ -22,7 +22,7 @@ Balle.prototype = {
 		if(this.color>0)
 			this.color--;
 		this.moveH(this.dx);
-		return this.moveV(this.dy);
+		this.moveV(this.dy);
 	},
 	moveH : function(delta){
 		var newX=this.x+delta;
@@ -39,23 +39,19 @@ Balle.prototype = {
 	},
 	moveV: function(delta){
 		var newY=this.y+delta;
-		var res=false;
-		if( newY-this.R>0 && newY+this.R<this.canH-this.joueur.h){
+		if( newY-this.R>0 && newY+this.R<this.canH-this.joueur.h){ // Deplacement normal
 			this.y=newY;
-			return res;
 		}else{
-			if( newY-this.R<=0){
+			if( newY-this.R<=0){ // balle rebondie en haut
 				this.Y=this.R;
 			}else{
+				//Rebond en bas
 				this.y=this.canH-this.R-this.joueur.h;
-					var safe =parseInt(document.getElementById('y').innerHTML) + 1;
 				if(this.x>this.joueur.x && this.x<this.joueur.x+this.joueur.w){ // Balle sauvée
-					if(safe%3==0)
-						res =true;
 					var event = new Event('balleSauve');
 					document.dispatchEvent(event);
 				}
-				else{ //Balle perdu
+				else{ //Balle perdue
 					var event = new Event('balleMorte');
 					document.dispatchEvent(event);
 					this.color+=5;
@@ -64,12 +60,11 @@ Balle.prototype = {
 			
 			this.dy*=-1;
 		}
-		return res;
 	}
 }
 Balles = function(canH_,canW_,joueur_){
 	this.tab=[];
-	this.Tmax=10000;
+	this.Tmax=300;
 	this.canW=canW_;
 	this.canH=canH_;
 	this.joueur=joueur_;
@@ -84,8 +79,7 @@ Balles.prototype= {
 	move : function (){
 		var end= this.tab.length;
 		for(var i=0 ;i<end;i++){
-			if(this.tab[i].move())
-				this.addRandom();
+			this.tab[i].move();
 		}
 	},
 	draw : function(drawKeyboard){
@@ -98,7 +92,6 @@ Balles.prototype= {
 		var b=new Balle(Math.random()*this.canW,Math.random()*90+10,this.canH,this.canW,this.joueur);		
 		if(!this.add(b))
 			delete(b);
-		document.getElementById('nbBalle').innerHTML=this.tab.length;
 	},
 	removeAll : function(){
 		this.tab.length=0;

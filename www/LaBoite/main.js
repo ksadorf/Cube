@@ -9,12 +9,10 @@ Game = function(){
 	this.drawKeyboard = canvasKeyboard.getContext('2d');
 	this.joueur= new Joueur(this.width,this.height);
 	this.balles= new Balles(this.width,this.height,this.joueur);
-	this.balleMorte=0;
-	this.balleSauve=0;
-	this.highScore=0;
+	this.gameScore = new GameScore();
 	
 	this.initHandler();
-	this.initKeyboard();
+	this.launchGame();
 }
 Game.prototype={
 	redraw : function (){
@@ -24,22 +22,11 @@ Game.prototype={
 		}
 		this.balles.move();
 		this.joueur.move(this.keyboard);
-		document.getElementById('x').innerHTML=this.balleMorte;
-		document.getElementById('y').innerHTML=this.balleSauve;
-		var curScore=this.balleSauve*2-this.balleMorte;
-		document.getElementById('score').innerHTML = curScore;
-		if(curScore>=this.highScore){
-			this.highScore=curScore;
-			document.getElementById('score').style.color="#339933";
-			document.getElementById('highScore').innerHTML = curScore;
-		}else{
-			document.getElementById('score').style.color="";
-		}
 		this.joueur.draw(this.drawKeyboard);
 		this.balles.draw(this.drawKeyboard);
 	
 	},
-	initKeyboard : function(){
+	launchGame : function(){
 		this.balles.addRandom();
 		var that = this;		
 		requestAnimationFrame(function animate(){				
@@ -53,8 +40,7 @@ Game.prototype={
 		this.drawKeyboard.clearRect(0, 0, this.width, this.height);
 	},
 	reRoll : function() {
-		this.balleMorte=0;
-		this.balleSauve=0;
+		this.gameScore.ras();
 		this.balles.removeAll();
 		this.balles.addRandom();
 	},
@@ -68,12 +54,10 @@ Game.prototype={
 			var key=parseInt(e.keyCode);
 			that.keyboard[key]=false;
 		};
-		document.addEventListener('balleMorte', function (e) {
-				that.balleMorte++;
+		document.addEventListener('addBalle', function (e) {
+				that.balles.addRandom();
 			}, false);
-		document.addEventListener('balleSauve', function (e) {
-				that.balleSauve++;
-			}, false);
+		
 	}
 }
 

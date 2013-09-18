@@ -16,13 +16,13 @@ canvas {
 }
 
 
-#keyboardcontainer div {
+#Game div {
 	text-align: center;
 	font-size: 24px;
 	font-family: 'Bree Serif', serif;
 	padding: 20px 0;
 }
 
-#keyboardcontainer span {
+#Game span {
 	font-weight: bold;
 }
