@@ -1,3 +1,21 @@
+Color = function(r,g,b,a){
+	this.r=r;
+	this.g=g;
+	this.b=b;
+	this.a=a;
+}
+Color.prototype={
+	get : function(){	
+		return "'rgba("+r+","+g+","+b+","+a+")'";
+	}
+}
+
+BalleColor = function(colA, nb_frame,colB ){
+	this.first=colA;
+	this.nbFrame==nb_frame;
+	this.last=colB;
+}
+
 Balle=function(x,y,canH_,canW_,joueur_){	
 	this.x=x;
 	this.y=y;
