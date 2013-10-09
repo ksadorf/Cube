@@ -15,8 +15,16 @@ canvas {
 	display: block;
 }
 
-
-#Game div {
+@media (max-width: 500px) {
+	#game {
+		width:100%;
+		height:100%;
+	}
+	.superflue{
+		display: none;
+	}  
+  }
+#Game div,p {
 	text-align: center;
 	font-size: 24px;
 	font-family: 'Bree Serif', serif;

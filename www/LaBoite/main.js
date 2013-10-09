@@ -6,6 +6,8 @@ window.requestAnimFrame = (function(){
             window.setTimeout(callback, 1000 / 60);
           };
 })();
+screen.mozLockOrientation("portrait-primary")
+
 
 
 Game = function(){
@@ -67,7 +69,31 @@ Game.prototype={
 		document.addEventListener('addBalle', function (e) {
 				that.balles.addRandom();
 			}, false);
-		
+
+	window.ondeviceorientation= function(e) {
+			var y = e.gamma; // En degré sur l'interval [-90,90].
+	
+			// Pour rendre le calcul plus simple.
+			// On délimite l'intervalle de x et y sur [0, 180].
+			y += 90;
+			if( y<85){
+				that.keyboard[39]=true;
+				that.keyboard[37]=false;
+				if( y<20){
+					that.reRoll();
+				}
+			}else if( y>95){
+				that.keyboard[37]=true;
+				that.keyboard[39]=false;
+				if( y>160){
+					that.reRoll();
+				}
+			}else{
+				that.keyboard[37]=false;
+				that.keyboard[39]=false;
+			}
+
+		};
 	}
 }
 

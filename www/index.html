@@ -24,23 +24,24 @@
 
 	</head>
 	<body onload="new Game();">
-		<a href="https://github.com/ksadorf">
+		<a href="https://github.com/ksadorf" class="superflue">
 			<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
 		</a>
 
 		<div id="Game">
-			<div>
-				Vous êtes mort <span id="x" >0</span> fois et vous avez sauvé <span id="y" >0</span> balles ! <br>Ne laissez pas la boite gagner !
-			</div>
+			<p class="superflue">
+					Vous êtes mort <span id="x" >0</span> fois et vous avez sauvé <span id="y" >0</span> balles ! <br>Ne laissez pas la boite gagner !
+			</p>
+
 			
 			<canvas id="game" width="500" height="500">
 				Oh non ! Votre navigateur ne supporte pas les canvas.
 			</canvas>
-			<div>
-				Utiliser les flêches pour se déplacer et appuyer sur R pour recommencer. <br>
-				En ce moment, il y en a <span id="nbBalle"> 1 </span>. Votre score est courant <span id="score"> 0 </span>.<br>
-				Votre meilleur score de tout les temps : <span id="highScore"> 0 </span>.
-			</div>
+			<p>
+				<span class="superflue">Utiliser les flêches pour se déplacer et appuyer sur R pour recommencer. <br></span>
+				Nombre de balle <span id="nbBalle"> 1 </span>. Score courant <span id="score"> 0 </span>.<br>
+				Meilleur score : <span id="highScore"> 0 </span>.
+			</p>
 		</div>
 		
 	</body>
