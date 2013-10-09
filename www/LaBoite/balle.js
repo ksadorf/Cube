@@ -71,6 +71,7 @@ Balle.prototype = {
 				}
 				else{ //Balle perdue
 					var event = new Event('balleMorte');
+					var vibrating = navigator.vibrate(75);
 					document.dispatchEvent(event);
 					this.color+=5;
 				}

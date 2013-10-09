@@ -1,0 +1,20 @@
+{
+    "version": "1",
+    "name": "Cube",
+    "launch_path": "index.html",
+    "description": "Try to beat the cube",
+    "icons": {
+        "64": "/images/logo64.png"
+    },
+    "developer": {
+        "name": "Gaumont Noé",
+        "url": "ngaumont.fr"
+    },
+    "installs_allowed_from": ["*"],
+    "default_locale": "en",
+    "permissions": {
+        "desktop-notification": {
+            "description" : "To show notifications"
+        }
+    }
+}

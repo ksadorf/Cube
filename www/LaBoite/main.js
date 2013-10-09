@@ -1,3 +1,12 @@
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          function( callback ){
+            window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
 
 Game = function(){
 	this.keyboard=[];
@@ -15,7 +24,7 @@ Game = function(){
 	this.launchGame();
 }
 Game.prototype={
-	redraw : function (){
+	redraw : function (){	
 		this.clear();
 		if(this.keyboard[82]){
 			this.reRoll();
@@ -28,13 +37,14 @@ Game.prototype={
 	},
 	launchGame : function(){
 		this.balles.addRandom();
-		var that = this;		
-		requestAnimationFrame(function animate(){				
-				requestAnimationFrame(animate);
-				
-				that.redraw();
-				
+		var that = this;
+		
+		requestAnimFrame(function animate(){				
+				requestAnimFrame(animate);	
+		
+				that.redraw();				
 		});	
+		
 	},
 	clear : function(){
 		this.drawKeyboard.clearRect(0, 0, this.width, this.height);
