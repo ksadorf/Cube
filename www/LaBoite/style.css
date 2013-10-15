@@ -6,8 +6,8 @@ body {
 
 canvas {
 	box-shadow: 0px 0px 30px rgba(0,0,0,0.3);
-	padding-left: 0;
-    padding-right: 0;
+	padding-left: 0px;
+    padding-right: 0px;
     margin-left: auto;
     margin-right: auto;
 	background: #fff;
@@ -22,13 +22,22 @@ canvas {
 	}
 	.superflue{
 		display: none;
-	}  
+	} 
+	.min{
+		display: block;
+	}
+	#Game p{
+		padding: 0px 0px 0px;
+	}
   }
+	.min{
+		display: none;
+	}
 #Game div,p {
 	text-align: center;
 	font-size: 24px;
 	font-family: 'Bree Serif', serif;
-	padding: 20px 0;
+	padding: 20px;
 }
 
 #Game span {

@@ -31,31 +31,28 @@ Joueur.prototype = {
 		this.x=newX;
 		return;
 	},
-	moveV: function(delta){
-		var newY=this.y+delta;
-		if( newY<0){
-			if( this.y!=0){
-				this.y=0;
-			}
-			return;
+	moveAbs:function (newX){
+		
+		if(typeof(newX)!="undefined"){
+			var equivalentX=newX/document.getElementById('game').offsetWidth*this.canW;
+			equivalentX=equivalentX-this.w/2;
+			if(equivalentX<0){
+				this.x=0
+			}else if(equivalentX+this.w> this.canW){
+				this.x=this.canW-this.w;
+			}else{
+				this.x=equivalentX;
+				}
 		}
-		if(newY+this.h>this.canH ){
-			if(this.y+this.h!=this.canH){
-				this.y=this.canH-this.h;
-			}
-			return;
-		}
-		this.y=newY;
-		return;
 	},
 	move : function(keyboard){
-	if(typeof(keyboard)!="undefined"){
-		if(keyboard[39]) { //left
-			this.moveH(15);  
+		if(typeof(keyboard)!="undefined"){
+			if(keyboard[39]) { //left
+				this.moveH(15);  
+			}
+			if(keyboard[37]) { //right
+				this.moveH(-15); 
+			}
 		}
-		if(keyboard[37]) { //right
-			this.moveH(-15); 
-		}
-	}
 	}
 }

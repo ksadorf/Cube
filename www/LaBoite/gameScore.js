@@ -52,6 +52,7 @@ GameScore.prototype= {
 		this.curScore.maj(0);
 		this.curScore.dom.style.color="";
 		this.balleMorte.maj(0);
+		this.nbBalle.maj(1);
 		this.balleSauve.maj(0);
 	}, 
 	initHandler : function(){
