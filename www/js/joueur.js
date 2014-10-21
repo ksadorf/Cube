@@ -2,7 +2,7 @@
 Joueur = function(canH_,canW_){
 	
 	
-	this.h=15;
+	this.h=17;
 	this.w=100;
 	this.x=canW_/2-this.w/2;
 	this.y=canH_-this.h;
@@ -12,7 +12,7 @@ Joueur = function(canH_,canW_){
 Joueur.prototype = {
 	draw : function(drawKeyboard){
 		drawKeyboard.fillStyle = 'rgba(0,0,0,0.5)';
-		drawKeyboard.fillRect(this.x , this.y, this.w, this.h);
+		drawKeyboard.fillRect(this.x , this.y, this.w, this.h+2);
 	},
 	moveH : function(delta){
 		var newX=this.x+delta;

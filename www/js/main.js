@@ -8,7 +8,7 @@ window.requestAnimFrame = (function(){
 })();
 screen.mozLockOrientation("portrait-primary")
 
-
+console.log("COUCOU")
 
 Game = function(){
 	this.keyboard=[];
@@ -88,4 +88,4 @@ Game.prototype={
 		});
 	}
 }
-
+new Game();

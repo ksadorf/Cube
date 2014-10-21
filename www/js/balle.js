@@ -19,7 +19,7 @@ BalleColor = function(colA, nb_frame,colB ){
 Balle=function(x,y,canH_,canW_,joueur_){	
 	this.x=x;
 	this.y=y;
-	this.R=10;
+	this.R=15;
 	this.dx=Math.random() *8+0.1;
 	this.dy=Math.random() *5+3;
 	this.canW=canW_;
@@ -83,7 +83,7 @@ Balle.prototype = {
 }
 Balles = function(canH_,canW_,joueur_){
 	this.tab=[];
-	this.Tmax=300;
+	this.Tmax=10000;
 	this.canW=canW_;
 	this.canH=canH_;
 	this.joueur=joueur_;

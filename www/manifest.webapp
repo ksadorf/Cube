@@ -1,20 +1,32 @@
 {
-    "version": "1",
-    "name": "Cube",
-    "launch_path": "index.html",
-    "description": "Try to beat the cube",
-    "icons": {
-        "64": "/images/logo64.png"
-    },
-    "developer": {
-        "name": "Gaumont Noé",
-        "url": "ngaumont.fr"
-    },
-    "installs_allowed_from": ["*"],
-    "default_locale": "en",
-    "permissions": {
-        "desktop-notification": {
-            "description" : "To show notifications"
-        }
+  "version": "0.1.0",
+  "name": "Cube",
+  "description": "Try to beat the cube",
+  "launch_path": "/index.html",
+  "fullscreen": "true",
+  "orientation": "portrait-primary",
+  "icons": {
+    "16": "/img/icons/icon16x16.png",
+    "48": "/img/icons/icon48x48.png",
+    "60": "/img/icons/icon60x60.png",
+    "128": "/img/icons/icon128x128.png",
+	"512": "/img/icons/icon512x512.png"
+  },
+  "developer": {
+    "name": "Gaumont Noé",
+    "url": "https://github.com/ksadorf/"
+  },
+  "type": "privileged",
+  "permissions": {},
+  "installs_allowed_from": [
+    "*"
+  ],
+  "locales": {
+    "fr": {
+      "name": "Cube",
+      "description": "Battez le cube!",
+      "permissions": {}
     }
+  },
+  "default_locale": "en"
 }
